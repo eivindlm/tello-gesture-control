@@ -64,8 +64,12 @@ def process_frame(frame):
     return ix, iy
 
 if __name__ == "__main__":
-    cap = cv2.VideoCapture(0)
     
+    cap = cv2.VideoCapture(0)
+
     while True:
-        print("HEllo")
+        # Read a frame from the camera
         find_target(cap)
+
+        cv2.waitKey(1)
+
