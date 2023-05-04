@@ -486,7 +486,7 @@ class GestureBuffer:
 
     def get_gesture(self):
         counter = Counter(self._buffer).most_common()
-        if counter[0][1] >= (self.buffer_len - 1):
+        if len(counter) > 0 and counter[0][1] >= (self.buffer_len - 1):
             self._buffer.clear()
             return counter[0][0]
         else:

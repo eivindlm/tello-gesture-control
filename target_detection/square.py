@@ -2,10 +2,7 @@ import cv2
 import numpy as np
 
 def find_target(cap):
-    ret, frame = cap.read()
-
-    ix, iy = process_frame(frame)
-
+    ix, iy = process_frame(cap.frame)
     return ix, iy
 
 
@@ -43,7 +40,7 @@ def process_frame(frame):
                 cv2.circle(frame, (cX, cY), 5, (0, 0, 255), -1)
                 cv2.putText(frame, "Center ({:.2f}, {:.2f})".format(cX_norm, cY_norm), (cX - 20, cY - 20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2)
 
-    cv2.imshow("Square Detector", frame)
+    #cv2.imshow("Square Detector", frame)
 
     return ix, iy
 
