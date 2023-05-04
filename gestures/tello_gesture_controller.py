@@ -6,7 +6,7 @@ from ..motion_planning.image_center import move_to_image_center
 
 def find_target() -> tuple:
     # Input: image
-    # Output: image coordinate of target (x, y) \in [0,1]^2. negative values if not found.
+    # Output: image coordinate of target (x, y) \in [-1,1]^2. negative values if not found.
 
     # TODO, add switch or something to select algo
     return find_target_foobar()
@@ -44,7 +44,7 @@ class TelloGestureController:
                 return
             
             ix, iy = find_target()
-            if 0 <= ix <= 1 and 0 <= iy <= 1:
+            if -1 <= ix <= 1 and -1 <= iy <= 1:
                 print(f"TARGET: {ix}, {iy}")
                 mx, my, mz, myaw = motion_from_target(ix, iy)
                 print(f"MOTION: {mx}, {my}, {mz}, {myaw}")
