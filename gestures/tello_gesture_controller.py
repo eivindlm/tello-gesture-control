@@ -1,16 +1,17 @@
 from djitellopy import Tello
 import time
 
-from target_detection.square import find_target as find_square_target
+#from target_detection.square import find_target as find_square_target
+from target_detection.consultant import find_target
 from motion_planning.simple import vertical_motion
 
 
-def find_target(cap) -> tuple:
+#def find_target(cap) -> tuple:
     # Input: image
     # Output: image coordinate of target (x, y) \in [-1,1]^2. negative values if not found.
 
-    # TODO, add switch or something to select algo
-    return find_square_target(cap)
+#    # TODO, add switch or something to select algo
+#    return find_square_target(cap)
 
 def motion_from_target(ix, iy) -> tuple:
     # Input: image coordinate (ix,iy) \in [0,1]^2
@@ -51,9 +52,9 @@ class TelloGestureController:
             if -1 <= ix <= 1 and -1 <= iy <= 1:
                 mx, my, mz, myaw = motion_from_target(ix, iy)
                 print(f"MOTION: {mx}, {my}, {mz}, {myaw}")
-                self.tello.send_rc_control(mx, my, mz, myaw)
-                time.sleep(0.5)  # TODO, adjust
-                self.tello.send_rc_control(0, 0, 0, 0)
+                self.tello.send_rc_control(int(mx), int(my), int(mz), int(myaw))
+                #time.sleep(0.5)  # TODO, adjust
+                #self.tello.send_rc_control(0, 0, 0, 0)
 
 
 

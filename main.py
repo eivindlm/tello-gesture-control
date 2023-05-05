@@ -112,12 +112,12 @@ def main():
         elif key == 32:  # Space
             if not in_flight:
                 # Take-off drone
-                tello.takeoff()
+                #tello.takeoff()
                 in_flight = True
 
             elif in_flight:
                 # Land tello
-                tello.land()
+                #tello.land()
                 in_flight = False
 
         elif key == ord('k'):
